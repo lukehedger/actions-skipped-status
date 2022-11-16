@@ -1,0 +1,16 @@
+name: Skip Job
+
+on:
+  workflow_dispatch:
+
+jobs:
+  skip-job:
+    runs-on: ubuntu-latest
+    
+    if: github.repository != 'lukehedger/actions-skipped-status'
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Not skipped!
