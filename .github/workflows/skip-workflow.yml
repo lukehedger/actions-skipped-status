@@ -4,13 +4,13 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - 'README.md'
   workflow_dispatch:
 
 jobs:
   skip-workflow:
     runs-on: ubuntu-latest
+    
+    if: contains(github.event.commits[0].modified[*], 'README.md')
 
     steps:
       - uses: actions/checkout@v3
